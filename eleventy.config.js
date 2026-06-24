@@ -2,6 +2,7 @@ import Image from"@11ty/eleventy-img";
 import path from "path";
 // import handlebars from "handlebars";
 import handlebarsPlugin from "@11ty/eleventy-plugin-handlebars";
+import markdownToHtml from "./src/_shortcodes/markdown-to-html.js";
 
 export default async function(eleventyConfig) {
   // add plugin for handlebars
@@ -31,6 +32,8 @@ export default async function(eleventyConfig) {
 
     return Image.generateHTML(metadata, imageAttributes);
   });
+
+  eleventyConfig.addShortcode("markdown-to-html", markdownToHtml);
 
   // Pass through static assets directly to dist/
   eleventyConfig.addPassthroughCopy("src/assets/js");
