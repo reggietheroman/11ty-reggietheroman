@@ -1,0 +1,30 @@
+{
+  "name": "11ty-reggietheroman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/assets/css/input.css -o ./dist/assets/css/styles.css",
+    "build:11ty": "eleventy",
+    "build": "npm run build:css && npm run build:11ty",
+    "run:11ty": "eleventy --serve",
+    "run:css": "tailwindcss -i ./src/assets/css/input.css -o ./dist/assets/css/styles.css --watch",
+    "start": "concurrently \"pnpm run run:11ty\" \"pnpm run run:css\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy-plugin-handlebars": "^1.0.0",
+    "@tailwindcss/cli": "^4.3.0",
+    "concurrently": "^10.0.0",
+    "daisyui": "^5.5.23",
+    "markdown-it": "^14.2.0",
+    "tailwindcss": "^4.3.0"
+  }
+}
