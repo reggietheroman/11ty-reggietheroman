@@ -8,13 +8,16 @@ Personal website built with [Eleventy (11ty)](https://www.11ty.dev/) v3, Handleb
 ### Layout Chain
 ```
 base.hbs (outer shell: `<html>`, CSS/JS links, `{{{ content }}}`)
-  └── home.hbs (adds nav + hero + home-section, `{{{ content }}}`)
-        └── page.hbs (the actual page content)
+  ├── home.hbs (adds nav + hero + home-section, `{{{ content }}}`)
+  │     └── page.hbs (the actual page content)
+  └── markdown.hbs (adds `<section id="markdown-container">`, `{{{ content }}}`)
+        └── post.hbs (blog post content)
 ```
 
 - **`src/_layouts/base.hbs`** — Root layout. Includes CSS (`styles.css`), JS (`main.js`), Font Awesome.
 - **`src/_layouts/home.hbs`** — Extends `base.hbs`, adds `{{> nav}}`, `{{> home-section}}`.
-- **`src/_includes/`** — Partials: `nav.hbs`, `hero.hbs`, `home-section.hbs`, `content.md`. Subdirectory partials use path as name (e.g. `src/_includes/shared/card.hbs` → `{{> shared/card}}`).
+- **`src/_layouts/markdown.hbs`** — Extends `base.hbs`, wraps content in `<section id="markdown-container">`. Used by blog posts.
+- **`src/_includes/`** — Partials: `nav.hbs`, `hero.hbs`, `home-section.hbs`, `technologies.hbs`. Subdirectory partials use path as name (e.g. `src/_includes/shared/card.hbs` → `{{> shared/card}}`).
 
 ### Templating
 - **Language**: Handlebars (`.hbs`) — NOT Liquid (despite what README says).
@@ -51,15 +54,16 @@ base.hbs (outer shell: `<html>`, CSS/JS links, `{{{ content }}}`)
 ## Directory Structure
 ```
 src/
-├── _includes/         # Partials (nav.hbs, hero.hbs, home-section.hbs, content.md)
-├── _layouts/          # Layout templates (base.hbs, home.hbs)
+├── _content/          # Markdown content sources (blog/, cv/)
+├── _includes/         # Partials (nav.hbs, hero.hbs, home-section.hbs, technologies.hbs)
+├── _layouts/          # Layout templates (base.hbs, home.hbs, markdown.hbs)
 ├── _shortcodes/       # Shortcode JS functions (optimized-image, markdown-to-html)
 ├── assets/
 │   ├── css/           # Tailwind input CSS
 │   ├── js/            # Client JS (passthrough copied to dist/)
 │   └── fonts/         # Font files (passthrough copied to dist/)
-├── blog/              # Blog index + posts
-├── cv/                # CV index + markdown CVs
+├── blog/              # Blog index (index.hbs) + individual post pages
+├── cv/                # CV page (index.hbs)
 ├── static/            # Static root files (robots.txt, sitemap.xml, .well-known/)
 └── index.hbs          # Homepage
 .opencode/             # opencode config + memory
