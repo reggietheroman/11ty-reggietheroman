@@ -66,6 +66,22 @@ eleventyConfig.addPassthroughCopy({
   Sitemap: https://reggietheroman.com/sitemap.xml
   ```
 
+## robots.txt
+
+Current file at `src/static/robots.txt`:
+```
+User-agent: *
+Disallow: /assets
+Allow: /
+
+Sitemap: https://reggietheroman.com/sitemap.xml
+```
+
+### Validation notes
+- **Disallow: /assets** — blocks `/assets`, `/assets/`, `/assets/css/styles.css`. Also catches `/assets-extra/` — consider `Disallow: /assets/` if directory-only.
+- **Allow: /** after `Disallow` — valid per RFC 9309. Most specific rule wins, so `/assets` paths stay blocked.
+- **Sitemap** — URL matches deployed sitemap.
+
 ## TODO
 
 - [ ] Understand what 11ty's collection pipeline offers (pagination, tags, collection-based loops) — decide if it's worth adopting for blog posts

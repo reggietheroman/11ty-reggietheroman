@@ -39,6 +39,10 @@ export default async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
   eleventyConfig.addPassthroughCopy("src/assets/Reginald_Bigornia_Senior_FullStack_Engineer.pdf");
+  eleventyConfig.addPassthroughCopy({
+    "src/static/robots.txt": "/robots.txt",
+    "src/static/sitemap.xml": "/sitemap.xml"
+  });
   
   // Return your configuration object
   return {
