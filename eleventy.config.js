@@ -38,6 +38,7 @@ export default async function(eleventyConfig) {
   // Pass through static assets directly to dist/
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
+  eleventyConfig.addPassthroughCopy("src/assets/Reginald_Bigornia_Senior_FullStack_Engineer.pdf");
   
   // Return your configuration object
   return {
