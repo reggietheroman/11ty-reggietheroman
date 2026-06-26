@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+   themes: coffee --default;
+}
 
 /* You should also put the ff in this file: */
 /* 1. Custom Theme Extensions */

@@ -22,6 +22,7 @@
     "@11ty/eleventy-img": "^6.0.4",
     "@11ty/eleventy-plugin-handlebars": "^1.0.0",
     "@tailwindcss/cli": "^4.3.0",
+    "@tailwindcss/typography": "^0.5.20",
     "concurrently": "^10.0.0",
     "daisyui": "^5.5.23",
     "markdown-it": "^14.2.0",
