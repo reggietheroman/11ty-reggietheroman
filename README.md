@@ -1,10 +1,14 @@
 # 11ty ReggieTheRoman
 
-My personal website built using 11ty. It uses [Liquid](https://liquidjs.com/) for templating and [Tailwind](https://tailwindcss.com/) for css.
+My personal website built using 11ty. It uses [Handlebars](https://handlebarsjs.com/) for templating and [Tailwind](https://tailwindcss.com/) with [DaisyUI](https://daisyui.com/) for styling.
 
-- Liquid template component files belong in `src/_layouts`
+- Handlebars template component files belong in `src/_layouts`
+- Markdown content files belong in `src/_content`
 - CSS files belong in `src/assets/css`
 - JS files belong in `src/assets/js`
 
-A lot of architecture and examples are a callback to my love of [Ember.js](https://emberjs.com/)
+## Pages
 
+- Home: The home page
+- Blog: Some of my thoughts
+- CV: My CV
