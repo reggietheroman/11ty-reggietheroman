@@ -1,7 +1,7 @@
 # 11ty-reggietheroman — AI Agent Guide
 
 ## Project Overview
-Personal website built with [Eleventy (11ty)](https://www.11ty.dev/) v3, Handlebars (`.hbs`) templates, and Tailwind CSS v4.
+Personal website built with [Eleventy (11ty)](https://www.11ty.dev/) v3, Handlebars (`.hbs`) templates, Tailwind CSS v4, and [DaisyUI](https://daisyui.com/) components.
 
 ## Architecture
 
@@ -20,19 +20,19 @@ base.hbs (outer shell: `<html>`, CSS/JS links, `{{{ content }}}`)
 - **`src/_includes/`** — Partials: `nav.hbs`, `hero.hbs`, `home-section.hbs`, `technologies.hbs`. Subdirectory partials use path as name (e.g. `src/_includes/shared/card.hbs` → `{{> shared/card}}`).
 
 ### Templating
-- **Language**: Handlebars (`.hbs`) — NOT Liquid (despite what README says).
+- **Language**: Handlebars (`.hbs`).
 - **Engine**: `@11ty/eleventy-plugin-handlebars`.
 - **Markdown** uses Handlebars as its template engine (config: `markdownTemplateEngine: "hbs"`).
 - Partials are included with `{{> partialName}}` (no path, no extension).
 
 ### CSS
-- **Framework**: Tailwind CSS v4 (imported via `@import "tailwindcss"`).
+- **Framework**: Tailwind CSS v4 (imported via `@import "tailwindcss"`), with [DaisyUI](https://daisyui.com/) component classes.
 - **Build**: `tailwindcss -i ./src/assets/css/input.css -o ./dist/assets/css/styles.css`.
 - **Custom styles**: Add to `src/assets/css/input.css` (theme extensions, base styles, component classes).
 
 ### Shortcodes
 - **`optimizedImage`** (async): `{% optimizedImage src, alt, widths %}` — generates `<picture>` with AVIF, WebP, JPEG. Source images in `src/`, output in `dist/img/`.
-- **`markdown-to-html`**: `{% markdown-to-html "**bold**" %}` — converts Markdown string to HTML server-side. Imported from `src/_shortcodes/markdown-to-html.js`.
+- **`markdown-to-html`**: `{% markdown-to-html "**bold**" %}` or `{% markdown-to-html '../relative/path.md' %}` — converts Markdown string or file to HTML server-side. Imported from `src/_shortcodes/markdown-to-html.js`.
 - **Location convention**: Shortcode functions live in `src/_shortcodes/` and are imported into `eleventy.config.js`.
 
 ### Static Files (SEO)
@@ -62,10 +62,11 @@ src/
 │   ├── css/           # Tailwind input CSS
 │   ├── js/            # Client JS (passthrough copied to dist/)
 │   └── fonts/         # Font files (passthrough copied to dist/)
-├── blog/              # Blog index (index.hbs) + individual post pages
+├── blog/              # Blog index (index.hbs) + date-routed post pages (2026/06/05/*.hbs)
 ├── cv/                # CV page (index.hbs)
 ├── static/            # Static root files (robots.txt, sitemap.xml, .well-known/)
 └── index.hbs          # Homepage
+netlify.toml           # Netlify deployment config (headers, etc.)
 .opencode/             # opencode config + memory
 Notes.md               # Dev notes (SEO, architecture, etc.)
 dist/                  # Built output (gitignored)
