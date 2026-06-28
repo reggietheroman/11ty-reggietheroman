@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@fortawesome/fontawesome-free':
-        specifier: ^7.3.0
-        version: 7.3.0
     devDependencies:
       '@11ty/eleventy':
         specifier: ^3.1.5
@@ -21,6 +17,9 @@ importers:
       '@11ty/eleventy-plugin-handlebars':
         specifier: ^1.0.0
         version: 1.0.0
+      '@fortawesome/fontawesome-free':
+        specifier: ^7.3.0
+        version: 7.3.0
       '@tailwindcss/cli':
         specifier: ^4.3.0
         version: 4.3.0
