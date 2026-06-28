@@ -66,7 +66,7 @@ eleventyConfig.addPassthroughCopy({
   Sitemap: https://reggietheroman.com/sitemap.xml
   ```
 
-## robots.txt
+### robots.txt
 
 Current file at `src/static/robots.txt`:
 ```
@@ -77,7 +77,7 @@ Allow: /
 Sitemap: https://reggietheroman.com/sitemap.xml
 ```
 
-### Validation notes
+#### Validation notes
 - **Disallow: /assets** — blocks `/assets`, `/assets/`, `/assets/css/styles.css`. Also catches `/assets-extra/` — consider `Disallow: /assets/` if directory-only.
 - **Allow: /** after `Disallow` — valid per RFC 9309. Most specific rule wins, so `/assets` paths stay blocked.
 - **Sitemap** — URL matches deployed sitemap.
@@ -85,3 +85,9 @@ Sitemap: https://reggietheroman.com/sitemap.xml
 ## TODO
 
 - [ ] Understand what 11ty's collection pipeline offers (pagination, tags, collection-based loops) — decide if it's worth adopting for blog posts
+- [ ] Add a page for the speaking engagements ive done
+- [ ] Add a page for the work ive done with other companies
+
+## Known Issues
+
+- [ ] markdown used in `html-anchor-tag-and-urls.hbs` causes the page width to overflow horizontally on small screen sizes.
