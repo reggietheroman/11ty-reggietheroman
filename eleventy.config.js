@@ -34,6 +34,12 @@ export default async function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("markdown-to-html", markdownToHtml);
+  eleventyConfig.addShortcode("remainder", function(dividend, divisor) {
+    return dividend % divisor;
+  });
+  eleventyConfig.addShortcode("to-reversed", function(collection, collectionName) {
+    return collection[collectionName].toReversed();
+  });
 
   // Pass through static assets directly to dist/
   eleventyConfig.addPassthroughCopy("src/assets/js");
