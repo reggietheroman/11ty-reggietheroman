@@ -1,0 +1,21 @@
+<div class="hero bg-base-200 min-h-screen">
+  {{#if reverse}}
+    <div class="hero-content flex-col lg:flex-row-reverse">
+  {{else}}
+    <div class="hero-content flex-col lg:flex-row">
+  {{/if}}
+    <img
+      src={{imgSrc}}
+      class="max-w-sm rounded-lg shadow-2xl"
+    />
+    <div>
+      <h1 class="text-5xl font-bold">{{heading}}</h1>
+      <p class="py-6">
+        {{subText}}
+      </p>
+      {{#if buttonText}}
+        <a href={{buttonLink}} class="btn btn-primary">{{buttonText}}</a>
+      {{//if}}
+    </div>
+  </div>
+</div>
