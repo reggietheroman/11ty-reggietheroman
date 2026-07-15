@@ -13,28 +13,25 @@ title: ReggieTheRoman | Blog
 </div>
 
 <section id="blog-posts" class="flex flex-col gap-y-8">
-  {{> card
-    cardDate="June 21, 2026"
-    title="Writing code was always easy"
-    content="tl;dr - I figured out that I don't have difficulty writing syntax. I have a lack of understanding of programming concepts that makes doing certain things difficult."
-    buttonText="Read"
-    buttonLink="/blog/2026/06/21/writing-code-was-always-easy"
-  }}
-
-  {{> card
-    primary=true
-    cardDate="June 5, 2026"
-    title="Years of experience but still dumb"
-    content="tl;dr - I've been coding professionally for more than 10 years now but stuff still confuses me but its fine. I know what I don't know, and that gives me the ability to figure it out."
-    buttonText="Read"
-    buttonLink="/blog/2026/06/05/yoe-but-still-dumb"
-  }}
-
-  {{> card
-    cardDate="June 5, 2026"
-    title="Anchors Away! The HTML anchor tag and URLs"
-    content="tl;dr - Its news to me that URLs can be absolute or relative and thats pretty cool."
-    buttonText="Read"
-    buttonLink="/blog/2026/06/05/html-anchor-tag-and-urls"
-  }}
+  {{#each (to-reversed collections 'blogs') as |blog|}}
+    {{#if (remainder @index 2) }}
+      {{> card
+        primary=true
+        cardDate=blog.data.cardDate
+        title=blog.data.title
+        content=blog.data.tldr
+        buttonText="Read"
+        buttonLink=blog.page.url
+      }}
+    {{else}}
+      {{> card
+        cardDate=blog.data.cardDate
+        title=blog.data.title
+        content=blog.data.tldr
+        buttonText="Read"
+        buttonLink=blog.page.url
+      }}
+    {{/if}}
+  {{/each}}
+  <div class="divider w-full">END</div>
 </section>
