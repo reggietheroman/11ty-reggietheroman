@@ -1,5 +1,9 @@
 <div class="flex justify-center">
-  <div class="card w-96 bg-secondary card-md shadow-sm">
+  {{#if primary}}
+    <div class="card w-96 bg-primary card-md shadow-sm text-sky-100">
+  {{else}}
+    <div class="card w-96 bg-secondary card-md shadow-sm">
+  {{/if}}
     <div class="card-body">
       {{#if cardDate}}
         <h3 class="font-semibold">{{cardDate}}</h3>
@@ -11,9 +15,17 @@
       {{#if buttonText}}
         <div class="justify-end card-actions">
           {{#if openNew}}
-            <a href={{buttonLink}} target="_blank" class="btn btn-primary">{{buttonText}}</a>
+            {{#if primary}}
+              <a href={{buttonLink}} target="_blank" class="btn btn-secondary">{{buttonText}}</a>
+            {{else}}
+              <a href={{buttonLink}} target="_blank" class="btn btn-primary">{{buttonText}}</a>
+            {{/if}}
           {{else}}
-            <a href={{buttonLink}} class="btn btn-primary">{{buttonText}}</a>
+            {{#if primary}}
+              <a href={{buttonLink}} class="btn btn-secondary">{{buttonText}}</a>
+            {{else}}
+              <a href={{buttonLink}} class="btn btn-primary">{{buttonText}}</a>
+            {{/if}}
           {{/if}}
         </div>
       {{/if}}
