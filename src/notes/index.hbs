@@ -1,0 +1,33 @@
+---
+layout: base.hbs
+title: ReggieTheRoman | Blog
+---
+
+<div class="text-center mb-8">
+  <h1 class="text-4xl font-semibold">
+    Notes
+  </h1>
+  <p class="text-base">
+    Too short to be a blog post
+  </p>
+</div>
+
+<section id="blog-posts" class="flex flex-col gap-y-8">
+  {{#each (to-reversed collections 'notes') as |note|}}
+    {{#if (remainder @index 2) }}
+      {{> note-card
+        date=note.date
+        title=note.data.title
+        content=note.content
+      }}
+    {{else}}
+      {{> note-card
+        primary=true
+        date=note.date
+        title=note.data.title
+        content=note.content
+      }}
+    {{/if}}
+  {{/each}}
+  <div class="divider w-full">END</div>
+</section>

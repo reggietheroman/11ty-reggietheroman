@@ -41,6 +41,15 @@ export default async function(eleventyConfig) {
     return collection[collectionName].toReversed();
   });
 
+  eleventyConfig.addShortcode("to-readable-date", (dateObj) => {
+    return dateObj.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Manila"
+    });
+  });
+
   // Pass through static assets directly to dist/
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");

@@ -1,0 +1,18 @@
+<div class="flex justify-center">
+  {{#if primary}}
+    <div class="card w-96 bg-primary card-md shadow-sm text-sky-100">
+  {{else}}
+    <div class="card w-96 bg-secondary card-md shadow-sm">
+  {{/if}}
+    <div class="card-body">
+      {{#if date}}
+        <h3 class="font-semibold">{{to-readable-date date}}</h3>
+      {{/if}}
+      <h2 class="card-title">{{title}}</h2>
+      <div class="text-justify">
+        {{{content}}}
+      </div>
+    </div>
+  </div>
+</div>
+
