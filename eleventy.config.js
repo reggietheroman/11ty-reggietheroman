@@ -1,16 +1,11 @@
 import Image from"@11ty/eleventy-img";
 import path from "path";
-// import handlebars from "handlebars";
 import handlebarsPlugin from "@11ty/eleventy-plugin-handlebars";
 import markdownToHtml from "./src/_shortcodes/markdown-to-html.js";
 
 export default async function(eleventyConfig) {
   // add plugin for handlebars
   eleventyConfig.addPlugin(handlebarsPlugin);
-  // eleventyConfig.addPlugin(handlebarsPlugin, {
-	// 	// Override the `ejs` library instance
-	// 	eleventyLibraryOverride: handlebars,
-	// });
 
   // Async Shortcode for Optimized Images
   eleventyConfig.addAsyncShortcode("optimizedImage", async function(src, alt, widths = [300, 600, 900]) {
