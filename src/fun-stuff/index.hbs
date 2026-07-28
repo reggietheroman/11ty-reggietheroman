@@ -3,7 +3,16 @@ layout: base.hbs
 title: ReggieTheRoman | Fun Stuff
 ---
 
-<section>
+<section class="flex flex-col gap-y-8">
+  {{> card
+    primary=true
+    title="Eleventy Daisy"
+    content="My Eleventy starter template that comes with TailwindCSS and DaisyUI"
+    buttonText="Check it out!"
+    buttonLink="https://eleventy-daisy.reggietheroman.dev/"
+    openNew=true
+  }}
+
   {{> card
     title="Godot Platformer"
     content="My first godot game! This is a simple platformer based on the Brackeys godot tutorial"
