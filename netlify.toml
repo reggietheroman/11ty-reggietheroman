@@ -1,6 +1,16 @@
 [[headers]]
 for = "/*"
   [headers.values]
-  Cross-Origin-Opener-Policy = "same-origin"
-  Cross-Origin-Embedder-Policy = "require-corp"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets aggressively — prevents FOUC on navigation
+[[headers]]
+for = "/assets/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/img/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
  
