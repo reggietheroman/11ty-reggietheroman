@@ -1,7 +1,7 @@
 ---
 tags: notes
 title: Fun with Neopets!
-date: git Created
+date: "2026-07-25"
 ---
 
 My wife has been playing Neopets again since June and she has reached the point where one of the things she is interested in is customizing her lookup and pet pages.  

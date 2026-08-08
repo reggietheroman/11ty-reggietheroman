@@ -1,7 +1,7 @@
 ---
 tags: notes
 title: Short Vacation
-date: git Created
+date: "2026-08-09"
 ---
 
 Just came back from a short vacation. I did some dev stuff but mostly research into a better cursor workflow and working on ideas for the Shipaton 2026 hackathon.
