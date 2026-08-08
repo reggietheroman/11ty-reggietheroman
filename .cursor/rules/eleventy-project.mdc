@@ -1,0 +1,21 @@
+---
+description: Core conventions for the 11ty-reggietheroman personal site
+alwaysApply: true
+---
+
+# 11ty-reggietheroman
+
+Read `AGENTS.md` for full architecture. Key points:
+
+- Eleventy v3 + Handlebars + Tailwind v4 + DaisyUI (`coffee` theme)
+- Layouts: `base.hbs` → `home.hbs` or `markdown.hbs`
+- Collections: `tags: blogs` (blog posts), `tags: notes` (notes)
+- Blog posts are single `.md` files at `src/blog/YYYY/MM/DD/slug.md` — no paired `.hbs`
+- Notes render inline on `/notes/` — no detail pages
+- CV content lives in `src/_content/cv/content.md` (excluded from 11ty via `.eleventyignore`)
+- `pnpm start` for dev, `pnpm build` for production
+- Output: `dist/`
+
+When adding pages: update `nav.hbs` (mobile + desktop) and `src/static/sitemap.xml`.
+
+Known issues and fix priorities: `systems-research/AGENT_FEEDBACK.md`.

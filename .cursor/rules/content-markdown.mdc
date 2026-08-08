@@ -1,0 +1,21 @@
+---
+description: Content authoring conventions for blog posts, notes, and markdown pages
+globs: "src/{blog,notes,about,_content}/**/*.{md,markdown}"
+alwaysApply: false
+---
+
+# Content Markdown
+
+## Blog Post (`src/blog/YYYY/MM/DD/slug.md`)
+Required frontmatter: `tags: blogs`, `layout: markdown.hbs`, `title`, `shortTitle`, `tldr`, `cardDate`.
+File path sets the URL. Write body as standard Markdown below frontmatter.
+
+## Note (`src/notes/NNN-slug.md`)
+Required frontmatter: `tags: notes`, `title`, `date`.
+Prefix filename with zero-padded number for ordering. Body renders inline on `/notes/` — no detail page.
+
+## About / Markdown Pages
+Use `layout: markdown.hbs` and `title` in frontmatter. Body wrapped in DaisyUI `prose` classes automatically.
+
+## CV (`src/_content/cv/content.md`)
+Raw markdown only — no frontmatter. Pulled in by CV page via `markdown-to-html` shortcode. Excluded from 11ty processing.

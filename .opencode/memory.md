@@ -1,42 +1,37 @@
 # Project Memory
 
 ## Current State
-- Personal website built with Eleventy 11ty v3, Handlebars, Tailwind CSS v4, DaisyUI.
-- Site is functional with blog (3 posts), CV, and homepage sections.
-- Uses `pnpm` as package manager.
-- Blog posts use date-based routing (`/blog/2026/06/05/slug`).
-- Deployed on Netlify with security headers in `netlify.toml`.
+- Personal website at reggietheroman.com — Eleventy v3, Handlebars, Tailwind CSS v4, DaisyUI (`coffee` theme).
+- Pages: Home, Blog (3 posts), Notes (3 notes), CV, Projects, About.
+- Uses `pnpm` as package manager. Output in `dist/` (gitignored).
+- Deployed on Netlify (`netlify.toml` — security headers, asset caching).
 
 ## Development
-- `pnpm start` runs both 11ty dev server and Tailwind CSS watch in parallel.
-- Built output goes to `dist/` (gitignored).
+- `pnpm start` — 11ty dev server + Tailwind CSS watch (concurrently).
+- `pnpm build` — production build (CSS then 11ty).
 
-## Architecture Notes
-- Layout chain: `base.hbs` → `home.hbs` → page content. Also: `base.hbs` → `markdown.hbs` → blog post content.
-- Handlebars partials in `src/_includes/` (supports subdirectories — e.g. `shared/card.hbs` → `{{> shared/card}}`): `nav.hbs`, `hero.hbs`, `home-section.hbs`, `technologies.hbs`.
-- Layouts in `src/_layouts/`: `base.hbs`, `home.hbs`, `markdown.hbs`.
-- Shortcodes in `src/_shortcodes/`, imported into `eleventy.config.js`.
-- Tailwind v4 is imported via `@import "tailwindcss"` in `input.css` — no `tailwind.config.js` needed.
-- Markdown files use Handlebars as template engine.
-- Shortcodes: `{% optimizedImage %}` (async, AVIF/WebP/JPEG) and `{% markdown-to-html %}`.
-- Static root files (`robots.txt`, `sitemap.xml`) live in `src/static/` and are remapped to `dist/` root via passthrough copy.
-- Site URL: `reggietheroman.com`. Sitemap referenced in `robots.txt`.
-- Markdown sources in `src/_content/blog/` (date-subdirectories: `2026/06/05/`, `2026/06/21/`) and `src/_content/cv/`.
-- Blog `.hbs` pages mirror the date structure: `src/blog/2026/06/05/slug.hbs`.
-- Blog posts use `{{markdown-to-html '../path/to/file.md'}}` to pull in markdown content.
-- Deployment: Netlify (`netlify.toml` configures COOP/COEP security headers).
+## Architecture
+- Layout chain: `base.hbs` → `home.hbs` (homepage) or `markdown.hbs` (blog/about).
+- Partials: `nav`, `home-section`, `technologies`, `card`, `note-card`, `hero`, `hero-w-figure`.
+- Collections: `tags: blogs` → blog index; `tags: notes` → notes index.
+- Blog posts are single `.md` files at `src/blog/YYYY/MM/DD/slug.md` with date-based URLs.
+- Notes are `.md` files in `src/notes/` — rendered inline on index, no detail pages.
+- CV body in `src/_content/cv/content.md` (excluded via `.eleventyignore`), pulled via `markdown-to-html`.
+- Shortcodes: `optimizedImage`, `markdown-to-html`, `remainder`, `to-reversed`, `to-readable-date`.
+- Static files in `src/static/` remapped to dist root via passthrough copy.
 
 ## Conventions
-- kebab-case for files/directories.
-- `.hbs` extension for all Handlebars templates.
+- kebab-case files/directories, `.hbs` for templates.
 - Frontmatter must include `layout` and `title`.
-- Double quotes in JS config; single quotes in frontmatter where possible.
+- Double quotes in JS config; single quotes in frontmatter.
 
-## Known Issues / TODOs
-- `src/assets/js/main.js` is empty.
-- `src/static/.well-known/` directory exists but no passthrough copy is configured for it in `eleventy.config.js`.
+## Known Issues
+- See `systems-research/AGENT_FEEDBACK.md` for full list.
+- Sitemap is static and missing several pages.
+- No meta/OG tags, 404 page, favicon, or RSS feed.
+- `main.js` is empty. Font Awesome loads full library.
 
-## Past Decisions
-- Handlebars chosen over Liquid for template syntax familiarity.
-- Tailwind v4 used without separate config file (uses `@import` directive).
-- Static root files kept in `src/static/` and remapped via `addPassthroughCopy` with object mapping for cleaner organization.
+## AI Assistant Files
+- `AGENTS.md` — primary agent guide (architecture, content, commands).
+- `.cursor/rules/` — Cursor-specific rules (project, handlebars, content).
+- `systems-research/` — PLAN.md, AGENT_FEEDBACK.md, TIMELINE.md.

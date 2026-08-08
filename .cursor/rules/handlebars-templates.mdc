@@ -1,0 +1,16 @@
+---
+description: Handlebars template conventions for 11ty pages and partials
+globs: "**/*.hbs"
+alwaysApply: false
+---
+
+# Handlebars Templates
+
+- All templates use `.hbs` extension with Handlebars syntax
+- Partials in `src/_includes/` — reference as `{{> partialName}}` (no path/extension)
+- Layouts in `src/_layouts/` — set via frontmatter `layout: base.hbs`
+- Use `{{{ content }}}` (triple braces) for unescaped HTML output
+- Use `{{> card ...}}` with named params: `title`, `content`, `buttonText`, `buttonLink`, `primary`, `openNew`, `cardDate`
+- DaisyUI component classes (`card`, `btn`, `collapse`, `navbar`, etc.) — see existing partials for patterns
+- Alternate card colors: `{{#if (remainder @index 2)}}` for primary, `{{else}}` for secondary
+- New pages need `layout` and `title` in frontmatter
